@@ -1,5 +1,7 @@
 module ReactNative.Components.MaskedViewIOS (
-  maskedViewIOS'
+  maskedViewIOS',
+  -- maskedViewIOS 
+  MaskElement
 )
 where
 
@@ -10,8 +12,20 @@ import ReactNative.Components.View (ViewPropsEx)
 import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
 import ReactNative.Unsafe.Components (maskedViewIOSU)
 
-type MaskedViewIOS = ViewPropsEx () () () --(--   maskElement :: element
+type MaskedViewIOS r = {
+  maskElement :: MaskElement
+  | r
+}
+
+type MaskedViewIOSO = ViewPropsEx () () () --(--   maskElement :: element
     --) () ()
 
-maskedViewIOS' :: {|MaskedViewIOS} -> Array ReactElement -> ReactElement
+newtype MaskElement = MaskElement ReactElement
+
+maskedViewIOS' :: {|MaskedViewIOSO} -> Array ReactElement -> ReactElement
 maskedViewIOS' = maskedViewIOSU <<< unsafeApplyProps
+
+-- maskedViewIOS :: forall o
+--   .  Optional o MaskedViewIOSO
+--   => MaskedViewIOS o -> Array ReactElement -> ReactElement
+-- maskedViewIOS = MaskElement <<< maskedViewIOSU <<< unsafeApplyProps

@@ -40,14 +40,12 @@ scrollView :: Styles -> Array ReactElement -> ReactElement
 scrollView style = scrollViewU {style}
 
 type RefreshProps r = {
-    onRefresh :: UnitEventHandler
-  , refreshing :: Boolean
+  refreshing :: Boolean
   | r
 }
 
 type RefreshPropsO = (
     onRefresh :: UnitEventHandler
-  , refreshing :: Boolean
   , android :: {
       colors :: Array Color
     , enabled :: Boolean

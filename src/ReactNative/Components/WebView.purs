@@ -1,5 +1,7 @@
 module ReactNative.Components.WebView (
-  webView
+  webView,
+  DataDetectorType,
+  dataDetectorType
 )
 where
 
@@ -12,6 +14,7 @@ import ReactNative.Optional (class Optional)
 import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
 import ReactNative.Unsafe.Components (webViewU)
 import Type.Data.Boolean (kind Boolean)
+import Unsafe.Coerce (unsafeCoerce)
 
 
 type WebViewPropsO = ViewPropsEx (
@@ -27,7 +30,7 @@ type WebViewPropsO = ViewPropsEx (
   , onLoadStart :: UnitEventHandler
   -- , onMessage :: Function --TODO: check this
   , onNavigationStateChange :: UnitEventHandler --TODO: check this
-  , originWhitelist :: Array String -- TODO: check this it is array of strings
+  , originWhitelist :: Array String -- TODO: check this it is "array of strings"
   , renderError :: UnitEventHandler  --TODO: check this
   , renderLoading :: UnitEventHandler --TODO: check this
   , scalesPageToFit :: Boolean
@@ -49,7 +52,7 @@ type WebViewPropsO = ViewPropsEx (
   , allowsInlineMediaPlayback :: Boolean
   , bounces :: Boolean
   , contentInset :: {top :: Number, left :: Number, bottom :: Number, right :: Number}
---   , dataDetectorTypes :: string, or array
+  , dataDetectorTypes :: DataDetectorType --TODO: string, or array
   , scrollEnabled :: Boolean
   , useWebKit :: Boolean
 )
@@ -58,3 +61,27 @@ webView :: forall o
   .  Optional o WebViewPropsO
   => {|o} -> ReactElement
 webView = webViewU <<< unsafeApplyProps
+
+
+newtype DataDetectorType = DataDetectorType String
+
+dataDetectorType :: {
+    phoneNumber :: DataDetectorType
+  , link :: DataDetectorType
+  , address :: DataDetectorType
+  , calendarEvent :: DataDetectorType
+  , none :: DataDetectorType
+  , all :: DataDetectorType
+}
+dataDetectorType = {
+    phoneNumber: DataDetectorType "phoneNumber"
+  , link: DataDetectorType "link"
+  , address: DataDetectorType "address"
+  , calendarEvent: DataDetectorType "calendarEvent"
+  , none: DataDetectorType "none"
+  , all: DataDetectorType "all"
+}
+
+dataDetectors :: Array DataDetectorType -> DataDetectorType
+dataDetectors = unsafeCoerce
+

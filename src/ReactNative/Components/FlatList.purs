@@ -7,6 +7,7 @@ import Prelude
 
 import React (ReactElement)
 import ReactNative.Components.ScrollView (ScrollViewPropsEx)
+import ReactNative.Events (UnitEventHandler)
 import ReactNative.Optional (class Optional)
 import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
 import ReactNative.Unsafe.Components (flatListU)
@@ -36,7 +37,7 @@ type FlatListPropsO = ScrollViewPropsEx (
   , numColumns :: Number
   -- , onEndReached :: Function
   , onEndReachedThreshold :: Number
-  -- , onRefresh :: Function
+  , onRefresh :: UnitEventHandler --TODO: check this
   -- , onViewableItemsChanged :: Function
   , legacyImplementation :: Boolean
   , refreshing :: Boolean

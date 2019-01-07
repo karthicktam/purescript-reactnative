@@ -1,6 +1,6 @@
 module ReactNative.Components.ToolbarAndroid (
   toolbarAndroid
-)
+) --TODO: this file is also exists in android folder
 where
 
 import Prelude
@@ -17,7 +17,7 @@ import Type.Data.Boolean (kind Boolean)
 
 type ToolbarAndroidO = ViewPropsEx (
    overflowIcon :: ImageSource  --TODO: (optionalImageSource)
---    actions :: Array  --TODO: check this(array of object: {title: string,icon: optionalImageSource,show: enum('always', 'ifRoom', 'never'),showWithText: bool})
+ , actions :: Array String  --TODO: check this(array of object: {title: string,icon: optionalImageSource,show: enum('always', 'ifRoom', 'never'),showWithText: bool})
  , contentInsetStart :: Number
  , logo :: ImageSource  --TODO: (optionalImageSource)
  , navIcon :: ImageSource  --TODO: (optionalImageSource)

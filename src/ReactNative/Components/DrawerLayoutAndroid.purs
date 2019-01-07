@@ -5,10 +5,11 @@ module ReactNative.Components.DrawerLayoutAndroid (
   drawerPosition,
   keyboardDismissMode,
   drawerLockMode
-)
+) --TODO: this file is also exists in android folder
 where
 
 import Prelude
+
 import ReactNative.Optional (class Optional)
 import React (ReactElement)
 import ReactNative.Components.View (ViewPropsEx)
@@ -26,7 +27,7 @@ type DrawerLayoutAndroid r = {
 type DrawerLayoutAndroidO = ViewPropsEx (
     onDrawerClose :: UnitEventHandler
   , drawerPosition :: DrawerPosition
-  , drawerWidth :: Number
+  , drawerWidth :: Int
   , keyboardDismissMode :: KeyboardDismissMode
   , drawerLockMode :: DrawerLockMode
   , onDrawerOpen :: UnitEventHandler
@@ -44,13 +45,13 @@ drawerLayoutAndroid = drawerLayoutAndroidU <<< unsafeApplyProps
 
 newtype DrawerPosition = DrawerPosition String
 drawerPosition :: {
-    "DrawerConsts.DrawerPosition.Left" :: DrawerPosition
-  , "DrawerConsts.DrawerPosition.Right" :: DrawerPosition
+    left :: DrawerPosition
+  , right :: DrawerPosition
 }
 drawerPosition = {
-    "DrawerConsts.DrawerPosition.Left": DrawerPosition "DrawerConsts.DrawerPosition.Left"
-  , "DrawerConsts.DrawerPosition.Right": DrawerPosition "DrawerConsts.DrawerPosition.Right"
-}
+    left: DrawerPosition "left"
+  , right: DrawerPosition "right"
+}  --TODO: check this
 
 newtype KeyboardDismissMode = KeyboardDismissMode String
 keyboardDismissMode :: {

@@ -26,7 +26,7 @@ type ImagePropsO = BaseProps (
   , source :: ImageSource  --TODO: check this
   , android :: {
       resizeMethod :: ResizeMethod
-    , fadeDuration :: Number  
+    , fadeDuration :: Number --By default, it is 300ms.  
     }
   , ios :: {
       accessibilityLabel :: String

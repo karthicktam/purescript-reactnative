@@ -5,22 +5,21 @@ where
 
 import Prelude
 
-import Data.Foldable (any)
+-- import Data.Foldable (any)
 import React (ReactElement)
 import ReactNative.Components.ScrollView (ScrollViewPropsEx)
 import ReactNative.Events (UnitEventHandler)
 import ReactNative.Optional (class Optional)
-import ReactNative.PropTypes.Color (Color)
+-- import ReactNative.PropTypes.Color (Color)
 import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
 import ReactNative.Unsafe.Components (sectionListU)
 import Type.Data.Boolean (kind Boolean)
-import Unsafe.Coerce (unsafeCoerce)
 
 
 type SectionListProps r = {
     -- sections :: array of Sections --TODO: check this
     initialNumToRender :: Number   
---   , keyExtractor :: (item: Item, index: number) => string  
+  -- , keyExtractor :: (item :: Item, index :: Number) => String  
   -- , renderItem :: Function
   | r
 }
@@ -32,10 +31,9 @@ type SectionListPropsO = ScrollViewPropsEx (
     inverted :: Boolean
 --   , ListFooterComponent :: component, function, element
   , legacyImplementation :: Boolean
---   , extraData :: component, function
 --   , ListEmptyComponent :: component, function, element
   , onEndReachedThreshold :: Number
-  -- , onRefresh :: [() => void]
+  , onRefresh :: UnitEventHandler -- TODO: [() => void]
   -- , onViewableItemsChanged :: Function  --TODO: check this
   , refreshing :: Boolean
   , removeClippedSubviews :: Boolean
@@ -46,7 +44,7 @@ type SectionListPropsO = ScrollViewPropsEx (
   , stickySectionHeadersEnabled :: Boolean
 ) --() ()
 
--- | Create an ActivityIndicator with props and the `animating` flag
+
 sectionList :: forall o
   .  Optional o SectionListPropsO
   => SectionListProps o -> Array ReactElement -> ReactElement

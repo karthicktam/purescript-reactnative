@@ -13,6 +13,7 @@ import Ansi.Codes (Color)
 import React (ReactElement)
 import ReactNative.Components.View (ViewPropsEx)
 import ReactNative.Optional (class Optional)
+import ReactNative.Styles (Styles)
 import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
 import ReactNative.Unsafe.Components (tabBarIOSU)
 import Type.Data.Boolean (kind Boolean)
@@ -21,7 +22,7 @@ type TabBarIOSO = ViewPropsEx (
    barStyle :: BarStyleType
  , barTintColor :: Color
  , itemPositioning :: ItemPositioning
---  , style :: View.style
+ , style :: Styles --TODO: (View.style) 
  , tintColor :: Color
  , translucent :: Boolean
  , unselectedItemTintColor :: Color

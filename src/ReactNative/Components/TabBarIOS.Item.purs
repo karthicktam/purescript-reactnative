@@ -9,23 +9,24 @@ import Prelude
 
 import Ansi.Codes (Color)
 import React (ReactElement)
-import ReactNative.Events (UnitEventHandler)
 import ReactNative.Components.View (ViewPropsEx)
+import ReactNative.Events (UnitEventHandler)
 import ReactNative.Optional (class Optional)
-import ReactNative.PropTypes (ImageSource)  --TODO: check this 
+import ReactNative.PropTypes (ImageSource)
+import ReactNative.Styles (Styles)
 import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
 import ReactNative.Unsafe.Components (tabBarIOSItemU)
 import Type.Data.Boolean (kind Boolean)
 
 type TabBarIOSItemO = ViewPropsEx (
    selected :: Boolean
- , badge :: String   --TODO: check this(string, ,number)
+ , badge :: String   --TODO: check this (string, ,number)
  , icon :: ImageSource
  , onPress :: UnitEventHandler  --TODO: check this
  , renderAsOriginal :: Boolean
  , badgeColor :: Color
  , selectedIcon :: ImageSource
---  , style :: View.style
+ , style :: Styles --TODO: View.style
  , systemIcon :: SystemIcon
  , title :: String
 ) () (
@@ -47,11 +48,11 @@ systemIcon :: {
   , featured :: SystemIcon
   , history :: SystemIcon 
   , more :: SystemIcon
-  , "most-recent" :: SystemIcon
-  , "most-viewed" :: SystemIcon
+  , mostRecent :: SystemIcon
+  , mostViewed :: SystemIcon
   , recents :: SystemIcon
   , search :: SystemIcon
-  , "top-rated" :: SystemIcon
+  , topRated :: SystemIcon
 }
 systemIcon = {
     bookmarks: SystemIcon "bookmarks"
@@ -61,9 +62,9 @@ systemIcon = {
   , featured: SystemIcon "featured"
   , history: SystemIcon "history"
   , more: SystemIcon "more"
-  , "most-recent": SystemIcon "most-recent"
-  , "most-viewed": SystemIcon "most-viewed"
+  , mostRecent: SystemIcon "most-recent"
+  , mostViewed: SystemIcon "most-viewed"
   , recents: SystemIcon "recents"
   , search: SystemIcon "search"
-  , "top-rated": SystemIcon "top-rated"                
+  , topRated: SystemIcon "top-rated"                
 }

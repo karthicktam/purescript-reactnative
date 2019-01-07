@@ -2,7 +2,7 @@ module ReactNative.Components.ProgressBarAndroid (
   StyleAttrType,
   styleAttrType,
   progressBarAndroid
-)
+) --TODO: this file already exists in android folder
 where
 
 import Prelude
@@ -18,8 +18,7 @@ import Type.Data.Boolean (kind Boolean)
 type ProgressBarAndroidO = ViewPropsEx (
    animating :: Boolean
  , color :: Color
---  , indeterminate :: indeterminateType
- , progress :: Number
+--  , indeterminate :: indeterminateType   TODO: check this (Note that this can only be false if styleAttr is Horizontal.)
  , styleAttr :: StyleAttrType
  , testID :: String
 ) () ()

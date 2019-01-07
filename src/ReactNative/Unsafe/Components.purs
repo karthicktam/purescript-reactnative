@@ -83,7 +83,7 @@ foreign import touchableOpacityClass         :: forall props. ReactClass {|props
 foreign import touchableWithoutFeedbackClass :: forall props. ReactClass {|props}
 foreign import viewClass                     :: forall props. ReactClass {|props}
 foreign import viewPagerAndroidClass         :: forall props. ReactClass {|props}
-foreign import virtualizedListClass         :: forall props. ReactClass {|props}
+foreign import virtualizedListClass          :: forall props. ReactClass {|props}
 foreign import webViewClass                  :: forall props. ReactClass {|props}
 
 -- | Create a [Text](https://facebook.github.io/react-native/docs/text.html) component unsafely

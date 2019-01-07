@@ -5,16 +5,16 @@ where
 
 import Prelude
 
-import Data.Foldable (any)
+-- import Data.Foldable (any)
 import React (ReactElement)
 import ReactNative.Components.ScrollView (ScrollViewPropsEx)
 import ReactNative.Events (UnitEventHandler)
 import ReactNative.Optional (class Optional)
-import ReactNative.PropTypes.Color (Color)
+-- import ReactNative.PropTypes.Color (Color)
 import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
 import ReactNative.Unsafe.Components (virtualizedListU)
 import Type.Data.Boolean (kind Boolean)
-import Unsafe.Coerce (unsafeCoerce)
+-- import Unsafe.Coerce (unsafeCoerce)
 
 
 type VirtualizedListProps r = {
@@ -36,7 +36,7 @@ type VirtualizedListPropsO = ScrollViewPropsEx (
 --   , ListFooterComponent :: component, function, element
 --   , ListHeaderComponent :: component, function, element
   , onLayout :: UnitEventHandler
---   , onRefresh :: Function
+  , onRefresh :: UnitEventHandler --TODO: check this
 --   , onScrollToIndexFailed :: Function
 --   , onViewableItemsChanged :: Function
   , refreshing :: Boolean
@@ -60,7 +60,7 @@ type VirtualizedListPropsO = ScrollViewPropsEx (
 --     progressViewOffset :: Number
 -- ) ()
 
--- | Create an ActivityIndicator with props and the `animating` flag
+
 virtualizedList :: forall o
   .  Optional o VirtualizedListPropsO
   => VirtualizedListProps o -> Array ReactElement -> ReactElement

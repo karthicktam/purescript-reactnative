@@ -1,6 +1,8 @@
 module ReactNative.Components.ViewPagerAndroid (
   viewPagerAndroid,
   KeyboardDismissMode,
+  ScrollEvent,
+  SelectedEvent,
   keyboardDismissMode
 )
 where
@@ -9,6 +11,7 @@ import Prelude
 
 import React (ReactElement)
 import ReactNative.Components.View (ViewPropsEx)
+import ReactNative.Events (EventHandler)
 import ReactNative.Optional (class Optional)
 import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
 import ReactNative.Unsafe.Components (viewPagerAndroidU)
@@ -24,9 +27,9 @@ type ViewPagerAndroid r = {
 type ViewPagerAndroidO = ViewPropsEx (
     initialPage :: Number
   , keyboardDismissMode :: KeyboardDismissMode
-  -- , onPageScroll :: Function
-  -- , onPageScrollStateChanged :: Function
-  -- , onPageSelected :: Function
+  , onPageScroll :: EventHandler ScrollEvent  --TODO: check this
+  , onPageScrollStateChanged :: EventHandler Unit
+  , onPageSelected :: EventHandler SelectedEvent  --TODO: check this
   , pageMargin :: Number 
   , peekEnabled :: Boolean
   , scrollEnabled :: Boolean
@@ -46,4 +49,18 @@ keyboardDismissMode = {
     none: KeyboardDismissMode "none"
   , onDrag: KeyboardDismissMode "on-drag"
 }
+
+type ScrollEvent = {
+  nativeEvent :: {
+      position :: Number
+    , offset :: Number
+  }
+}
+
+type SelectedEvent = {
+  nativeEvent :: {
+      position :: Number
+  }
+}
+
 

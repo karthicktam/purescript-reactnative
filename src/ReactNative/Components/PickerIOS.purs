@@ -6,15 +6,16 @@ where
 import Prelude
 
 import React (ReactElement)
-import ReactNative.Optional (class Optional)
 import ReactNative.Components.View (ViewPropsEx)
 import ReactNative.Events (UnitEventHandler)
+import ReactNative.Optional (class Optional)
+import ReactNative.Styles (Styles)
 import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
 import ReactNative.Unsafe.Components (pickerIOSU)
 
 type PickerIOSO = ViewPropsEx (
-  --  itemStyle :: text styles
-   onValueChange :: UnitEventHandler
+   itemStyle :: Styles  --TODO: check this
+ , onValueChange :: UnitEventHandler
 --  , selectedValue :: any
 ) () ()
  

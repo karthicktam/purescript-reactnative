@@ -41,5 +41,5 @@ exports.touchableOpacityClass         = RN.TouchableOpacity;
 exports.touchableWithoutFeedbackClass = RN.TouchableWithoutFeedback;
 exports.viewClass                     = RN.View;
 exports.viewPagerAndroidClass         = RN.ViewPagerAndroid;
-exports.virtualizedListClass         = RN.VirtualizedList;
+exports.virtualizedListClass          = RN.VirtualizedList;
 exports.webViewClass                  = RN.WebView;

@@ -16,7 +16,7 @@ import Type.Data.Boolean (kind Boolean)
 type KeyboardAvoidingViewPropsO = ViewPropsEx (
     keyboardVerticalOffset :: Number
   , behavior :: BehaviorType
---   , contentContainerStyle :: View.style
+  , contentContainerStyle :: Styles --TODO: View.style
   , enabled :: Boolean
 ) () ()
 
