@@ -1,8 +1,13 @@
 module ReactNative.Unsafe.Components (
   textU
 , viewU
+, flatListU
 , safeAreaViewU
 , imageU
+, inputAccessoryViewU  --TODO: check this
+, imageBackgroundU  --TODO: check this
+, maskedViewIOSU  --TODO: check this
+, pickerIOSU  --TODO: check this
 , listViewU
 , toolbarAndroidU
 , activityIndicatorU
@@ -11,6 +16,7 @@ module ReactNative.Unsafe.Components (
 , touchableHighlightU
 , touchableOpacityU
 , scrollViewU
+, sectionListU
 , refreshControlU
 , switchU
 , drawerLayoutAndroidU
@@ -26,12 +32,13 @@ module ReactNative.Unsafe.Components (
 , modalU
 , progressBarAndroidU
 , progressViewIOSU
-, segmentedControlIOSU
+, segmentedControlIOSU --TODO: check this
 , statusBarU
 , snapshotViewIOSU
 , tabBarIOSU
 , tabBarIOSItemU
 , viewPagerAndroidU
+, virtualizedListU
 , webViewU
 ) where
 
@@ -41,19 +48,25 @@ foreign import activityIndicatorClass        :: forall props. ReactClass {|props
 foreign import buttonClass                   :: forall props. ReactClass {|props}
 foreign import datePickerIOSClass            :: forall props. ReactClass {|props}
 foreign import drawerLayoutAndroidClass      :: forall props. ReactClass {|props}
+foreign import flatListClass                 :: forall props. ReactClass {|props}
 foreign import imageClass                    :: forall props. ReactClass {|props}
+foreign import inputAccessoryViewClass       :: forall props. ReactClass {|props}
+foreign import imageBackgroundClass          :: forall props. ReactClass {|props}
 foreign import keyboardAvoidingViewClass     :: forall props. ReactClass {|props}
 foreign import listViewClass                 :: forall props. ReactClass {|props}
 foreign import mapViewClass                  :: forall props. ReactClass {|props}
+foreign import maskedViewIOSClass            :: forall props. ReactClass {|props}
 foreign import modalClass                    :: forall props. ReactClass {|props}
 foreign import navigatorIOSClass             :: forall props. ReactClass {|props}
 foreign import pickerClass                   :: forall props. ReactClass {|props}
+foreign import pickerIOSClass                :: forall props. ReactClass {|props}
 foreign import pickerItemClass               :: forall props. ReactClass {|props}
 foreign import progressBarAndroidClass       :: forall props. ReactClass {|props}
 foreign import progressViewIOSClass          :: forall props. ReactClass {|props}
 foreign import refreshControlClass           :: forall props. ReactClass {|props}
 foreign import safeAreaViewClass             :: forall props. ReactClass {|props}
 foreign import scrollViewClass               :: forall props. ReactClass {|props}
+foreign import sectionListClass              :: forall props. ReactClass {|props}
 foreign import segmentedControlIOSClass      :: forall props. ReactClass {|props}
 foreign import sliderClass                   :: forall props. ReactClass {|props}
 foreign import statusBarClass                :: forall props. ReactClass {|props}
@@ -70,6 +83,7 @@ foreign import touchableOpacityClass         :: forall props. ReactClass {|props
 foreign import touchableWithoutFeedbackClass :: forall props. ReactClass {|props}
 foreign import viewClass                     :: forall props. ReactClass {|props}
 foreign import viewPagerAndroidClass         :: forall props. ReactClass {|props}
+foreign import virtualizedListClass         :: forall props. ReactClass {|props}
 foreign import webViewClass                  :: forall props. ReactClass {|props}
 
 -- | Create a [Text](https://facebook.github.io/react-native/docs/text.html) component unsafely
@@ -80,6 +94,11 @@ textU = unsafeCreateElement textClass
 viewU :: forall props. {|props} -> Array ReactElement -> ReactElement
 viewU = unsafeCreateElement viewClass
 
+-- | Create a [FlatList](https://facebook.github.io/react-native/docs/flatlist.html) component unsafely
+flatListU :: forall props. {|props} -> Array ReactElement -> ReactElement
+flatListU = unsafeCreateElement flatListClass  --TODO: check thiis
+
+
 -- | Create a [SafeAreaView](https://facebook.github.io/react-native/docs/safeareaview.html) component unsafely
 safeAreaViewU :: forall props. {|props} -> Array ReactElement -> ReactElement
 safeAreaViewU = unsafeCreateElement safeAreaViewClass
@@ -87,6 +106,23 @@ safeAreaViewU = unsafeCreateElement safeAreaViewClass
 -- | Create an [Image](https://facebook.github.io/react-native/docs/image.html) component unsafely
 imageU :: forall props. {|props} -> Array ReactElement -> ReactElement
 imageU = unsafeCreateElement imageClass
+
+-- | Create an [InputAccessoryView](https://facebook.github.io/react-native/docs/inputaccessoryview.html) component unsafely
+inputAccessoryViewU :: forall props. {|props} -> Array ReactElement -> ReactElement
+inputAccessoryViewU = unsafeCreateElement inputAccessoryViewClass --TODO: check this
+
+-- | Create an [ImageBackground](https://facebook.github.io/react-native/docs/imagebackground.html) component unsafely
+imageBackgroundU :: forall props. {|props} -> Array ReactElement -> ReactElement
+imageBackgroundU = unsafeCreateElement imageBackgroundClass --TODO: check this
+
+
+-- | Create an [ImageBackground](https://facebook.github.io/react-native/docs/imagebackground.html) component unsafely
+maskedViewIOSU :: forall props. {|props} -> Array ReactElement -> ReactElement
+maskedViewIOSU = unsafeCreateElement maskedViewIOSClass --TODO: check this
+
+-- | Create an [PickerIOS](https://facebook.github.io/react-native/docs/pickerIOS.html) component unsafely
+pickerIOSU :: forall props. {|props} -> Array ReactElement -> ReactElement
+pickerIOSU = unsafeCreateElement pickerIOSClass --TODO: check this
 
 -- | Create a [ListView](https://facebook.github.io/react-native/docs/listview.html) component unsafely
 listViewU :: forall props. {|props} -> ReactElement
@@ -119,6 +155,10 @@ touchableOpacityU p c = unsafeCreateElement touchableOpacityClass p [c]
 -- | Create a [ScrollView](https://facebook.github.io/react-native/docs/scrollview.html) component unsafely
 scrollViewU :: forall props. {|props} -> Array ReactElement -> ReactElement
 scrollViewU = unsafeCreateElement scrollViewClass
+
+-- | Create a [SectionList](https://facebook.github.io/react-native/docs/sectionlist.html) component unsafely
+sectionListU :: forall props. {|props} -> Array ReactElement -> ReactElement
+sectionListU = unsafeCreateElement sectionListClass
 
 -- | Create an [RefreshControl](https://facebook.github.io/react-native/docs/refreshcontrol.html) component unsafely
 refreshControlU :: forall props. {|props} -> ReactElement
@@ -203,6 +243,10 @@ tabBarIOSItemU = unsafeCreateElement tabBarIOSItemClass
 -- | Create a [ViewPagerAndroid](https://facebook.github.io/react-native/docs/viewpagerandroid.html) component unsafely
 viewPagerAndroidU :: forall props. {|props} -> Array ReactElement -> ReactElement
 viewPagerAndroidU = unsafeCreateElement viewPagerAndroidClass
+
+-- | Create a [VirtualizedList](https://facebook.github.io/react-native/docs/virtualizedlist.html) component unsafely
+virtualizedListU :: forall props. {|props} -> Array ReactElement -> ReactElement
+virtualizedListU = unsafeCreateElement virtualizedListClass  --TODO: check this
 
 -- | Create a [WebView](https://facebook.github.io/react-native/docs/webview.html) component unsafely
 webViewU :: forall props. {|props} -> ReactElement

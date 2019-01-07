@@ -11,12 +11,20 @@ import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
 import ReactNative.Unsafe.Components (buttonU)
 import Prelude
 
+type ButtonProps r = {
+    onPress :: EventHandler TouchEvent
+  , title :: String  --TODO: check this
+  | r
+}
+
 type ButtonPropsO = (
     accessibilityLabel :: String
   , color :: Color
   , disabled :: Boolean
-  , onPress :: EventHandler TouchEvent
-  , title :: String
+  , testID :: String
+  , ios :: {
+      hasTVPreferredFocus :: Boolean --TODO: Apple Tv only
+  }
 )
 
 -- | Create a button with the given `title` and `onPress` handler
@@ -28,5 +36,5 @@ button_ :: String -> ReactElement
 button_ title = buttonU {title}
 
 -- | Create a button with the given props and `title`
-button' :: forall o. Optional o ButtonPropsO => {|o} -> ReactElement
+button' :: forall o. Optional o ButtonPropsO => ButtonProps o -> ReactElement
 button' = buttonU <<< unsafeApplyProps

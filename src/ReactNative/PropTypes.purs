@@ -49,6 +49,8 @@ refFunc = identity
 
 type Insets = {top:: Number, left:: Number, bottom:: Number, right:: Number}
 
+-- type Actions = {title: string,icon: optionalImageSource,show: enum('always', 'ifRoom', 'never'),showWithText: bool} TODO: we need to do
+
 foreign import nativeImageSource :: {android::String, width::Int, height::Int } -> ImageSource
 
 class AutoEnum a where

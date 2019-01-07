@@ -31,25 +31,28 @@ foreign import unsafeMerge :: forall a b c. a -> b -> c
 type SectionId = String
 type RowId = String
 
-type ListViewProps a section blob r = {
+type ListViewProps a section blob r = {  --TODO: Fully check this component
     dataSource :: ListViewDataSource' blob a section
+  , initialListSize :: Int  
+  , onEndReachedThreshold :: Int
+  , pageSize :: Int
   , renderRow :: RowRenderer a
+  , renderScrollComponent :: forall props. props -> ReactElement
+  , scrollRenderAheadDistance :: Int
+  , stickyHeaderIndices :: Array Number
   | r
 }
 
 type ListViewPropsO section = ScrollViewPropsEx (
     enableEmptySections :: Boolean
-  , initialListSize :: Int
   , onChangeVisibleRows :: EventHandler2 RowMap RowMap
   , onEndReached :: EventHandler (Nullable ScrollEvent)
-  , onEndReachedThreshold :: Int
-  , pageSize :: Int
   , renderFooter :: Unit -> ReactElement
   , renderHeader :: Unit -> ReactElement
-  , renderScrollComponent :: forall props. props -> ReactElement
   , renderSectionHeader :: SectionRenderer section
   , renderSeparator :: Fn3 SectionId RowId Boolean ReactElement
-  , scrollRenderAheadDistance :: Int
+  , removeClippedSubviews :: Boolean
+  , stickySectionHeadersEnabled :: Boolean
 )
 
 -- | Create a list view with a data source and a simple row rendering function

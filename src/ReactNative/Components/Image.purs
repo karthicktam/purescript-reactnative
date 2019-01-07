@@ -14,11 +14,6 @@ import ReactNative.Styles (ResizeMode, Styles)
 import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
 import ReactNative.Unsafe.Components (imageU)
 
-type ImageProps r = {
-  source :: ImageSource
-  | r
-}
-
 type ImagePropsO = BaseProps (
     style :: Styles
   , onError :: UnitEventHandler
@@ -27,15 +22,18 @@ type ImagePropsO = BaseProps (
   , onLoadEnd :: UnitEventHandler
   , onLoadStart :: UnitEventHandler
   , resizeMode :: ResizeMode
+  , loadingIndicatorSource :: Array ImageSource --TODO: Number
+  , source :: ImageSource  --TODO: check this
   , android :: {
       resizeMethod :: ResizeMethod
+    , fadeDuration :: Number  
     }
   , ios :: {
       accessibilityLabel :: String
     , accessible :: Boolean
     , blurRadius :: Number
     , capInsets :: {top::Number, left::Number, bottom::Number, right::Number}
-    , defaultSource :: ImageSource
+    , defaultSource :: ImageSource  --TODO: check this
     , onPartialLoad :: UnitEventHandler
     , onProgress :: EventHandler ImageProgressEvent
     }
@@ -52,7 +50,7 @@ backgroundImage style source = imageU {style, source}
 -- | Background images are simply normal images with children overalayed ontop
 backgroundImage' :: forall o
   .  Optional o ImagePropsO
-  => ImageProps o -> Array ReactElement -> ReactElement
+  => {|o} -> Array ReactElement -> ReactElement
 backgroundImage' = imageU <<< unsafeApplyProps
 
 -- | Create an Image from source only
@@ -66,7 +64,7 @@ image style source = imageU {style, source} []
 -- | Create an Image with props and source
 image' :: forall o
   .  Optional o ImagePropsO
-  => ImageProps o -> ReactElement
+  => {|o} -> ReactElement
 image' p = imageU (unsafeApplyProps p) []
 
 newtype ResizeMethod = ResizeMethod String
