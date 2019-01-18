@@ -1,6 +1,8 @@
--- 
-
-module ReactNative.API  where
+module ReactNative.API (
+  alert
+, keyboardDismiss
+, registerComponent
+) where
 
 import Data.Function.Uncurried (Fn4, runFn4)
 import Data.Maybe (Maybe)
@@ -115,14 +117,49 @@ foreign import netInfo_getConnectionInfo :: forall e. Effect e Unit
 
 foreign import permissionsAndroid_constructor :: forall e. Effect e Unit
 
-foreign import permissionsAndroid_check :: forall e permission. permission -> Effect e Unit
+foreign import permissionsAndroid_check :: forall e. String -> Effect e Unit
 
-foreign import permissionsAndroid_request :: forall e permission rationale. permission -> rationale -> Effect e Unit
+foreign import permissionsAndroid_request :: forall e rationale. String -> rationale -> Effect e Unit
 
-foreign import permissionsAndroid_requestMultiple :: forall e permissions. permissions -> Effect e Unit
+foreign import permissionsAndroid_requestMultiple :: forall e. Array String -> Effect e Unit
+
+-- PushNotificationIOS
+
+foreign import pushNotificationIOS_removeAllDeliveredNotifications :: forall e. Eff e Unit
+
+foreign import pushNotificationIOS_constructor :: forall e nativeNotif. nativeNotif -> Effect e Unit
+
+foreign import pushNotificationIOS_finish :: forall e fetchResult. fetchResult -> Effect e Unit
+
+foreign import pushNotificationIOS_getContentAvailable :: forall e. Eff e Unit
+
+-- Share
+
+foreign import share_share :: forall e content options. content -> options -> Effect e Unit
+
+foreign import share_sharedAction :: forall e. Eff e Unit
+
+foreign import share_dismissedAction :: forall e. Eff e Unit
+
+-- StyleSheet
+
+foreign import styleSheet_setStyleAttributePreprocessor :: forall e property process. property -> process -> Effect e Unit
+
+foreign import styleSheet_flatten :: forall e style. style -> Effect e Unit
 
 --systrace
 
 foreign import systrace_installReactHook :: forall e. useFiber -> Effect e Unit
 
 foreign import systrace_isEnabled :: forall e. Effect e Unit
+
+-- ToastAndroid
+
+data Duration = SHORT | LONG
+data Gravity = TOP | BOTTOM | CENTER
+
+foreign import toastAndroid_showWithGravityAndOffset :: forall e. String -> Duration -> Gravity -> xOffset -> yOffset -> Effect e Unit
+
+-- VibrationIOS
+
+foreign import vibrationIOS_vibrate :: forall e. Effect e Unit

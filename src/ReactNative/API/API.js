@@ -369,6 +369,83 @@ exports.permissionsAndroid_requestMultiple = function (permissions) {
   };
 };
 
+// PushNotificationIOS
+
+var pushNotificationIOS = require('react-native').PushNotificationIOS;
+
+var pushNotificationIOS_removeAllDeliveredNotifications = pushNotificationIOS.removeAllDeliveredNotifications;
+exports.pushNotificationIOS_removeAllDeliveredNotifications = function (o) {
+  return function () {
+    return pushNotificationIOS_removeAllDeliveredNotifications();
+  };
+};
+
+var pushNotificationIOS_constructor = pushNotificationIOS.constructor;
+exports.pushNotificationIOS_constructor = function (nativeNotif) {
+  return function () {
+    return pushNotificationIOS_constructor(nativeNotif);
+  };
+};
+
+var pushNotificationIOS_finish = pushNotificationIOS.finish;
+exports.pushNotificationIOS_finish = function (fetchResult) {
+  return function () {
+    return pushNotificationIOS_finish(fetchResult);
+  };
+};
+
+var pushNotificationIOS_getContentAvailable = pushNotificationIOS.getContentAvailable;
+exports.pushNotificationIOS_getContentAvailable = function (o) {
+  return function () {
+    return pushNotificationIOS_getContentAvailable();
+  };
+};
+
+// Share
+
+var share = require('react-native').Share;
+
+var share_share = share.share;
+exports.share_share = function (content) {
+  return function (options) {
+    return function () {
+      return share_share(content, options);
+    };
+  };
+};
+
+var share_sharedAction = share.sharedAction;
+exports.share_sharedAction = function (o) {
+  return function () {
+    return share_sharedAction();
+  };
+};
+
+var share_dismissedAction = share.dismissedAction;
+exports.share_dismissedAction = function (o) {
+  return function () {
+    return share_dismissedAction();
+  };
+};
+
+// StyleSheet
+
+var styleSheet_setStyleAttributePreprocessor = styleSheet.setStyleAttributePreprocessor;
+exports.styleSheet_setStyleAttributePreprocessor = function (property) {
+  return function (process) {
+    return function () {
+      return styleSheet_setStyleAttributePreprocessor(property, process);
+    };
+  };
+};
+
+var styleSheet_flatten = styleSheet.flatten;
+exports.styleSheet_flatten = function (style) {
+  return function () {
+    return styleSheet_flatten(style);
+  };
+};
+
 // systrace
 
 var systrace = require('react-native').Systrace;
@@ -386,3 +463,35 @@ exports.systrace_isEnabled = function (o) {
     return systrace_isEnabled();
   };
 };
+
+// ToastAndroid
+
+var toastAndroid = require('react-native').ToastAndroid;
+
+var toastAndroid_showWithGravity = toastAndroid.showWithGravity;
+exports.toastAndroid_showWithGravity = function(message){
+    return function(duration){
+        return function(gravity){
+          return function(xOffset) {
+            return function(yOffset) {
+              return function(){
+                return toastAndroid_showWithGravity(message, duration, gravity, xOffset, yOffset);
+            };
+            };
+          };
+        };
+    };
+};
+
+// VibrationIOS
+
+var vibrationIOS = require('react-native').VibrationIOS;
+
+var vibrationIOS_vibrate = systrace.isEnabled;
+exports.vibrationIOS_vibrate = function (o) {
+  return function () {
+    return vibrationIOS_vibrate();
+  };
+};
+
+
