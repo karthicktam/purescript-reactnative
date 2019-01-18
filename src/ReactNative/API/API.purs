@@ -1,8 +1,6 @@
-module ReactNative.API (
-  alert
-, keyboardDismiss
-, registerComponent
-) where
+-- 
+
+module ReactNative.API  where
 
 import Data.Function.Uncurried (Fn4, runFn4)
 import Data.Maybe (Maybe)
