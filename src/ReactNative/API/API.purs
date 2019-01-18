@@ -2,6 +2,7 @@ module ReactNative.API (
   alert
 , keyboardDismiss
 , registerComponent
+, accessibilityInfo_fetch
 ) where
 
 import Data.Function.Uncurried (Fn4, runFn4)
