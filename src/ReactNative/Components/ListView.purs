@@ -31,7 +31,7 @@ foreign import unsafeMerge :: forall a b c. a -> b -> c
 type SectionId = String
 type RowId = String
 
-type ListViewProps a section blob r = {  --TODO: Fully check this component
+type ListViewProps a section blob r = {  
     dataSource :: ListViewDataSource' blob a section
   , initialListSize :: Int  
   , onEndReachedThreshold :: Int

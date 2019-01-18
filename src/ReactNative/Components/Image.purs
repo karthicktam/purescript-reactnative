@@ -27,13 +27,14 @@ type ImagePropsO = BaseProps (
   , android :: {
       resizeMethod :: ResizeMethod
     , fadeDuration :: Number --By default, it is 300ms.  
+    , defaultSource :: Number
     }
   , ios :: {
       accessibilityLabel :: String
     , accessible :: Boolean
     , blurRadius :: Number
     , capInsets :: {top::Number, left::Number, bottom::Number, right::Number}
-    , defaultSource :: ImageSource  --TODO: check this
+    , defaultSource :: ImageSource  --TODO: check this we have to add (Number)
     , onPartialLoad :: UnitEventHandler
     , onProgress :: EventHandler ImageProgressEvent
     }

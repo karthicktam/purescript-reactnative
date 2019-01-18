@@ -1,5 +1,10 @@
 module ReactNative.Components.FlatList (
-  flatList
+  flatList, 
+  EndReachedEvent,
+  ViewabilityConfig,
+  ViewableItemsChangedEvent,
+  ViewToken
+
 )
 where
 
@@ -21,28 +26,28 @@ type FlatListProps r = {
   }
 
 type FlatListPropsO = ScrollViewPropsEx (
-  --     props :: VirtualizedList   --TODO: change that
-  --   , ItemSeparatorComponent :: Component
-  --   , ListEmptyComponent :: component, function, element
-  --   , ListFooterComponent :: component, function, element
-  --   , ListHeaderComponent :: component, function, element
-  --   , columnWrapperStyle :: style object
-  --   , extraData :: any
-  -- getItemLayout :: Function
-  horizontal :: Boolean
+    -- props :: VirtualizedList   --TODO: change that
+  -- , ItemSeparatorComponent :: { flat :: FlatList | props } -> ReactElement --TODO: Component
+  -- , "ListEmptyComponent" :: UnitEventHandler --TODO: component, function, element
+  -- , "ListFooterComponent" :: UnitEventHandler --TODO: component, function, element
+  -- , "ListHeaderComponent" :: UnitEventHandler --TODO: component, function, element
+  -- , columnWrapperStyle :: style object
+  -- , extraData :: any
+  -- getItemLayout :: (data, index) => {length :: Number, offset :: Number, index :: Number}
+   horizontal :: Boolean
   , initialNumToRender :: Number
   , initialScrollIndex :: Number
   , inverted :: Boolean
-  -- , keyExtractor :: Function
+  -- , keyExtractor :: (item: object, index: number) => string;
   , numColumns :: Number
-  -- , onEndReached :: Function
+  , onEndReached :: EndReachedEvent --TODO: (info: {distanceFromEnd: number}) => void
   , onEndReachedThreshold :: Number
   , onRefresh :: UnitEventHandler --TODO: check this
-  -- , onViewableItemsChanged :: Function
+  , onViewableItemsChanged :: ViewableItemsChangedEvent --TODO: (info: { viewableItems: array, changed: array, }) => void
   , legacyImplementation :: Boolean
   , refreshing :: Boolean
   , removeClippedSubviews :: Boolean
-  --   , viewabilityConfig :: ViewabilityConfig
+  , viewabilityConfig :: ViewabilityConfig --TODO: check this
   -- , viewabilityConfigCallbackPairs :: array of ViewabilityConfigCallbackPair
   , android :: {
       progressViewOffset :: Number
@@ -56,3 +61,33 @@ flatList :: forall o
   .  Optional o FlatListPropsO
   => FlatListProps o -> Array ReactElement -> ReactElement
 flatList = flatListU <<< unsafeApplyProps
+
+type ViewableItemsChangedEvent = {
+  info :: {
+    --   viewableItems :: Array String
+    -- , changed :: Array String
+      viewableItems :: Array ViewToken 
+    , changed :: Array ViewToken
+  }
+}   --TODO: check this
+
+type ViewToken = {
+    item :: String --TODO: any
+  , key :: String
+  , index :: Number
+  , isViewable :: Boolean
+  , section :: String --TODO: any
+}
+
+type EndReachedEvent = {
+  info :: {
+      distanceFromEnd :: Number
+  }
+}   --TODO: check this
+
+type ViewabilityConfig = {
+      minimumViewTime :: Number
+    , viewAreaCoveragePercentThreshold :: Number
+    , itemVisiblePercentThreshold :: Number
+    , waitForInteraction :: Boolean
+}   --TODO: check this

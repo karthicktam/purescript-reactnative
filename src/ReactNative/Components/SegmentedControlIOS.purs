@@ -16,8 +16,8 @@ import Type.Data.Boolean (kind Boolean)
 type SegmentedControlIOSO = ViewPropsEx (
    enabled :: Boolean
  , momentary :: Boolean
- , onChange :: UnitEventHandler
- , onValueChange :: UnitEventHandler
+ , onChange :: UnitEventHandler  --TODO: check this
+ , onValueChange :: UnitEventHandler  --TODO: check this
  , selectedIndex :: Number
  , tintColor :: String
  , values :: Array String

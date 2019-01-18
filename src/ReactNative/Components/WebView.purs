@@ -23,7 +23,7 @@ type WebViewPropsO = ViewPropsEx (
   , injectJavaScript :: UnitEventHandler  --TODO: check thhis
   , injectedJavaScript :: String
   , mediaPlaybackRequiresUserAction :: Boolean
-  -- , nativeConfig :: Object
+  , nativeConfig :: {}  --TODO: The nativeConfig prop expects an object with the following keys: component (any), props (object), viewManager (object)
   , onError :: UnitEventHandler
   , onLoad :: UnitEventHandler
   , onLoadEnd :: UnitEventHandler

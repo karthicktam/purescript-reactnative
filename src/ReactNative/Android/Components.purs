@@ -127,7 +127,7 @@ drawerLayoutAndroid' :: forall o
   .  Optional o DrawerLayoutPropsO
   => DrawerLayoutProps o
   -> Array ReactElement
-  -> ReactElement
+  -> ReactElemen
 drawerLayoutAndroid' = drawerLayoutAndroidU <<< unsafeApplyProps
 
 foreign import openDrawer :: DrawerLayoutRef -> Effect Unit

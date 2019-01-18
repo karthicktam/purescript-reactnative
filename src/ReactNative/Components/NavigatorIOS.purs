@@ -1,15 +1,17 @@
 -- | See [NavigatorIOS](https://facebook.github.io/react-native/docs/navigatorios.html)
 module ReactNative.Components.NavigatorIOS (
     NavigatorIOS, navigatorIOS', NavigatorIOSProps
-  , push, pop, Route, RouteM, RouteO, RouteDefaults, mkRoute
+  , push, pop, Route, RouteM, RouteO, RouteDefaults, mkRoute, BarStyleType, barStyleType
 ) where
 
 import Prelude
+
 import Effect (Effect)
-import ReactNative.Optional (class Optional)
 import React (ReactElement, ReactThis)
 import ReactNative.Events (UnitEventHandler)
+import ReactNative.Optional (class Optional)
 import ReactNative.PropTypes (ImageSource, RefType)
+-- import ReactNative.PropTypes.Color (Color, black)
 import ReactNative.PropTypes.Color (Color)
 import ReactNative.Styles (Styles)
 import ReactNative.Unsafe.ApplyProps (unsafeApplyProps)
@@ -19,14 +21,15 @@ import Unsafe.Coerce (unsafeCoerce)
 newtype NavigatorIOS = NavigatorIOS (forall props state. ReactThis props state)
 
 type RouteDefaults r = (
-    barTintColor :: Color
+    barStyle :: BarStyleType
+  , barTintColor :: Color
   , navigationBarHidden :: Boolean
   , shadowHidden :: Boolean
   , tintColor :: Color
   , titleTextColor :: Color
   , translucent :: Boolean
   | r
-)
+)  --TODO: check this
 
 foreign import data Route :: Type
 
@@ -78,3 +81,13 @@ navigatorIOS' = navigatorIOSU <<< unsafeApplyProps
 foreign import push :: NavigatorIOS -> Route -> Effect Unit
 
 foreign import pop :: NavigatorIOS -> Effect Unit
+
+newtype BarStyleType = BarStyleType String
+barStyleType :: {
+    default :: BarStyleType
+  , black :: BarStyleType
+}
+barStyleType = {
+    default: BarStyleType "default"
+  , black: BarStyleType "black"
+}
